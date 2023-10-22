@@ -109,7 +109,7 @@ int main(void)
 	  uint8_t data[] = "HELLO, FEB!\n";
 //	  HAL_UART_Transmit(&huart1, data, sizeof(data), 10);
 	  HAL_UART_Transmit_IT(&huart1, data, sizeof(data));
-	  HAL_Delay(10);
+	  HAL_Delay(100);
 
 	  if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin)) {
 		  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);

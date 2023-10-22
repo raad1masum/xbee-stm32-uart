@@ -404,8 +404,8 @@ int main(void)
  8000528:	4619      	mov	r1, r3
  800052a:	480e      	ldr	r0, [pc, #56]	; (8000564 <main+0x64>)
  800052c:	f001 fca7 	bl	8001e7e <HAL_UART_Transmit_IT>
-	  HAL_Delay(10);
- 8000530:	200a      	movs	r0, #10
+	  HAL_Delay(100);
+ 8000530:	2064      	movs	r0, #100	; 0x64
  8000532:	f000 fae1 	bl	8000af8 <HAL_Delay>
 
 	  if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin)) {
