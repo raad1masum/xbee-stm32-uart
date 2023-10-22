@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
@@ -105,9 +106,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  uint8_t data[] = "HELLO, FEB! \r\n";
-	  HAL_UART_Transmit(&huart1, data, sizeof(data), 10);
-	  HAL_Delay(250);
+	  uint8_t data[] = "HELLO, FEB!\n";
+//	  HAL_UART_Transmit(&huart1, data, sizeof(data), 10);
+	  HAL_UART_Transmit_IT(&huart1, data, sizeof(data));
+	  HAL_Delay(10);
 
 	  if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin)) {
 		  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
