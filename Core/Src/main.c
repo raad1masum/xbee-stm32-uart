@@ -106,16 +106,26 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  uint8_t data[] = "HELLO, FEB!\n";
-//	  HAL_UART_Transmit(&huart1, data, sizeof(data), 10);
-	  HAL_UART_Transmit_IT(&huart1, data, sizeof(data));
-	  HAL_Delay(100);
 
-	  if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin)) {
-		  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-	  }
-	  else {
-		  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
+	  for (int i = 0; i <= 10; i++) {
+		  char out[20] = "Hello, FEB!";
+
+		  char str[4];
+		  sprintf(str, "%d", i);
+
+		  strcat(out, str);
+		  strcat(out, "\n");
+
+		  char data[50] = "Hello, FEB!\n";
+	//	  HAL_UART_Transmit(&huart1, data, sizeof(data), 10);
+		  HAL_UART_Transmit(&huart1, (uint8_t *) out, sizeof(out), 100);
+		  HAL_Delay(1000);
+		  char send1[3] = "+++";
+		  HAL_UART_Transmit(&huart1, (uint8_t *) send1, sizeof(send1), 100);
+		  HAL_Delay(1000);
+		  char send2[17] = "ATGT,CC,GT,CN<CR>";
+		  HAL_UART_Transmit(&huart1, (uint8_t *) send2, sizeof(send2), 100);
+		  HAL_Delay(1000);
 	  }
   }
   /* USER CODE END 3 */
